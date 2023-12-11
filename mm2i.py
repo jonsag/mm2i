@@ -75,7 +75,7 @@ if verbose:
 ########## Exact ##########
 if low_deviation == 0:
 
-    new_no_of_fractions, new_base = print_fraction(low_deviation, inch_floor, floor(no_of_fractions), verbose)
+    new_no_of_fractions, new_base = print_fraction(low_deviation, inch_floor, floor(no_of_fractions), resolution, verbose)
 
     if inch_floor == 0:
         print ("\nLow: {}/{}".format(new_no_of_fractions, new_base))
@@ -114,7 +114,7 @@ if verbose:
     print("High deviation: {}".format(high_deviation))
 
 ########## Low value ##########
-new_no_of_fractions, new_base = print_fraction(low_deviation, inch_floor, floor(no_of_fractions), verbose)
+new_no_of_fractions, new_base = print_fraction(low_deviation, inch_floor, floor(no_of_fractions), resolution, verbose)
 
 if inch_floor == 0:
     print ("\nLow: {}/{}".format(new_no_of_fractions, new_base))
@@ -140,7 +140,7 @@ if low_deviation < high_deviation:
     print("---> Closest, and copied to your clipboard!")
 
 ########## High value ##########
-new_no_of_fractions, new_base = print_fraction(high_deviation, inch_floor, floor(no_of_fractions + 1), verbose)
+new_no_of_fractions, new_base = print_fraction(high_deviation, inch_floor, floor(no_of_fractions + 1), resolution, verbose)
 
 if new_no_of_fractions / new_base == 1:
     inch_floor = inch_floor + 1

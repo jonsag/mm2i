@@ -38,7 +38,7 @@ def usage(exitCode):
 
     sys.exit(exitCode)
 
-def print_fraction(deviation, inch_floor, no_of_fractions, verbose):
+def print_fraction(deviation, inch_floor, no_of_fractions, resolution,verbose):
     if verbose:
         print("\n----------------------------")
         print("Whole part: {}".format(inch_floor))
