@@ -52,11 +52,26 @@ print ("\nDecimal: {}".format(decimal_inch))
 inch_floor = floor(decimal_inch)
 inch_remain =   decimal_inch - inch_floor              
 
-no_of_fractions = inch_remain / (1 / resolution)
+no_of_fractions = floor(inch_remain / (1 / resolution))
 
-low_value = (inch_floor + floor(no_of_fractions)/resolution) * factor
+if verbose:
+    print ("\nFloor: {}".format(inch_floor))
+    print ("Remain: {}".format(inch_remain))
+    print ("No of 1/{} fractions: {}".format(resolution, no_of_fractions))
+    
+if verbose:
+    print("\nCalculating deviation of input, {} mm, and {} {}/{}".format(mm, inch_floor, no_of_fractions, resolution))
+
+low_value = (inch_floor + no_of_fractions/resolution) * factor
+
+if verbose:
+    print("Low value: {}".format(low_value))
+    
 low_deviation = mm - low_value
 
+if verbose:
+    print("Low deviation: {}".format(low_deviation))
+    
 ########## Exact ##########
 if low_deviation == 0:
 
@@ -84,14 +99,19 @@ if low_deviation == 0:
     print("---> Exact, and copied to your clipboard!\n")
 
     exit(0)
-            
+    
+if verbose:
+    print("\nCalculating deviation of input, {} mm, and {} {}/{}".format(mm, inch_floor, no_of_fractions + 1, resolution))
+        
 high_value = (inch_floor + (no_of_fractions + 1)/resolution) * factor
-high_deviation = high_value - mm
 
 if verbose:
-    print ("\nFloor: {}".format(inch_floor))
-    print ("Remain: {}".format(inch_remain))
-    print ("No of 1/{} fractions: {}".format(resolution, no_of_fractions))
+    print("High value: {}".format(high_value))
+
+high_deviation = -(mm - high_value)
+
+if verbose:
+    print("High deviation: {}".format(high_deviation))
 
 ########## Low value ##########
 new_no_of_fractions, new_base = print_fraction(low_deviation, inch_floor, floor(no_of_fractions), verbose)
